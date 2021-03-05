@@ -1,0 +1,12 @@
+name: Pre-trial-modelling
+title: Pre-trial-modelling
+username:
+account: sebates
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3740953
+bundleId: 4304327
+url: https://sebates.shinyapps.io/Pre-trial-modelling/
+when: 1614942555.92099
+asMultiple: FALSE
+asStatic: FALSE

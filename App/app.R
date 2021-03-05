@@ -46,7 +46,6 @@ ui <- dashboardPage(
         menuItem("Information", icon = icon("th"), tabName = "Information"),  
         menuItem("Results summary", icon = icon("th"), tabName = "summary"), 
         menuItem("Justifiable cost", icon = icon("th"), tabName = "JC"), 
-        menuItem("Full Results", icon = icon("th"), tabName = "outcomes"), 
         menuItem("PSA results", icon = icon("th"), tabName = "PSA") 
         
         )  # close sidebar menu
@@ -82,7 +81,7 @@ ui <- dashboardPage(
             
               h3(div(style="display:inline-block;width:100%;text-align: center;",
                      "Select a single scenario on the left and view the results in the sections
-                     labelled results summary, justifiable cost, full results and PSA results")),
+                     labelled results summary, justifiable cost and PSA results")),
               
               h3(div(style="display:inline-block;width:100%;text-align: center;",
                      ("Results have been generated using the School of Public Health (SPHR) microsiulation
@@ -179,19 +178,6 @@ ui <- dashboardPage(
          
       ),  # close tabitem
  
-       # tab outcomes     
-       tabItem(tabName = "outcomes", 
-                    
-            fluidRow(
-              
-              # box with fill outcomes        
-              box(title="Full Results", status="warning", width = 12, solidHeader = TRUE,
-                          collapsible = TRUE, tableOutput("outcomes")),
-   
-            )   # close fluidrow
-                 
-        ),  # close tabitem
-          
        # tab PSA    
        tabItem(tabName = "PSA", 
                     
@@ -396,14 +382,14 @@ server <- function(input, output) {
     output$outcomes<-renderTable({
       
       # take relevant rows from the outcomes tables
-      Costs00<-rowSums(m_Ocontrol[c(1:10,11,13,14),]/5000)
-      CostsBB<-rowSums(m_Oscen[c(1:10,11,13,14),]/5000)
+      Costs00<-rowSums(m_Ocontrol[c(1:10,11,14),]/5000)
+      CostsBB<-rowSums(m_Oscen[c(1:10,11,14),]/5000)
       
       # calculate difference between groups
       inc<-CostsBB-Costs00
       
       # outcome labels
-      Outcomes<-c("Diabetes", "CVD", "Nephrology", "Retinopathy", "Neuropathy", "Cancer", "Osteoarthritis", "Depression", "Dementia", "Other", "Social", "Treatment", "QALYs")
+      Outcomes<-c("Diabetes", "CVD", "Nephrology", "Retinopathy", "Neuropathy", "Cancer", "Osteoarthritis", "Depression", "Dementia", "Other", "Social", "QALYs")
       
       # create data frame with outcomes
       meanpp<-data_frame(Outcomes,Costs00, CostsBB, inc)
