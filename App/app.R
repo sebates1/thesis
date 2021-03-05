@@ -81,7 +81,7 @@ ui <- dashboardPage(
             
               h3(div(style="display:inline-block;width:100%;text-align: center;",
                      "Select a single scenario on the left and view the results in the sections
-                     labelled results summary, justifiable cost and PSA results")),
+                     labelled results summary, justifiable cost and PSA results.")),
               
               h3(div(style="display:inline-block;width:100%;text-align: center;",
                      ("Results have been generated using the School of Public Health (SPHR) microsiulation
@@ -146,27 +146,26 @@ ui <- dashboardPage(
             
         ),   # close tab summary
            
-        # tab justificable cost
+        # tab justifiable cost
         tabItem(tabName = "JC", 
          
          fluidRow(
            
            # information about justifiable cost
            h3(div(style="display:inline-block;width:100%;text-align: center;",
-                  ("The justificable cost is the amount that can be spent on an intervention
+                  ("The justifiable cost is the amount that can be spent on an intervention
                    with an expected intervention effect and incremental cost-effectiveness ratio (ICER)"))),
            h3(div(style="display:inline-block;width:100%;text-align: center;",
-                  ("Below are the justifiable cost if the ICER is 0; that is the intervention 
-                   increases benefits while reducing costs. This is also reffered to as cost-saving"))),
+                  ("Below is the justifiable cost if the ICER is £0 (cost-saving intervetion)"))),
   
            # justifiable cost infobox cost saving
            infoBoxOutput("JC_cs", width = 6),
            
            # information about justifiable cost
            h3(div(style="display:inline-block;width:100%;text-align: center;",
-                  ("The justifiable costs assuming an ICER of £20,000 and £30,000 are also calcaulted.
-                   These were chosen as the maximum ICER accepted in the UK is estiamted to be between
-                   £20,000 and £30,000"))),
+                  ("The justifiable costs assuming an ICER of £20,000 and £30,000 per QALY are also calculated.
+                   NICE’s ‘threshold,’ over which treatments are less likely to be recommended for 
+                   use in the NHS, is typically between £20,000 and £30,000 per QALY."))),
            
            # justifiable cost infobox £20 000
            infoBoxOutput("JC_2", width = 6), 
